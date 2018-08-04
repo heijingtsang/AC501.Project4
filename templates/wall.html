@@ -21,17 +21,11 @@
     {% endwith %}
 
     {% for secret in secrets %}
-        <div class="ui card">
-            <div class="content">
-                <div class="header">{{ secret['title'] }}</div>
-                <div class="meta">{{ secret['time'] }}</div>
-                <div class="description">
-                    <p>{{ secret['content'] }}</p>
-                </div>
-            </div>
-            <div class="extra content">
-                ID: {{ secret['id'] }}
-            </div>
+        <div class="ui padded segment">
+            <p>ID: {{ secret['id'] }}</p>
+            <h3>{{ secret['title'] }}</h3>
+            <p>{{ secret['time'] }}</p>
+            <h5>{{ secret['content'] }}</h5>
         </div>
     {% endfor %}
 

@@ -40,6 +40,7 @@ def add():
             secret = Secrets(title=title, content=content, flag=flag)
             db.session.add(secret)
             db.session.commit()
+            return redirect(url_for('wall'))
 
     return render_template('add.html')
 
@@ -58,6 +59,9 @@ def report():
             id = request.form['id']
             secret = Secrets.query.filter_by(id=id).first()
             secret.flag += 1
+
+            if secret.flag >= 5:
+                db.session.delete(secret)
 
             db.session.commit()
             flash('Report has been sent to the administrator.')
